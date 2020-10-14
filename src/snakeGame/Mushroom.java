@@ -25,21 +25,27 @@ public class Mushroom extends GraphicsGroup {
         makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, x, y), makeMushroomStem(stemWidth, stemHeight, x, y));
     }
 
-    public Ellipse makeMushroomHead(int mushroomHeight, int mushroomWidth, int x, int y) {
+    public GraphicsGroup makeMushroomHead(int mushroomHeight, int mushroomWidth, int x, int y) {
         Ellipse mushroomHead = new Ellipse(x, y, mushroomWidth, mushroomHeight);
+        Rectangle flatHead = new Rectangle(x, y + (mushroomHeight *.5), mushroomWidth, (mushroomHeight *.5));
+        GraphicsGroup head = new GraphicsGroup();
         mushroomHead.setFillColor(MUSHROOM_RED);
         mushroomHead.setFilled(true);
-        return mushroomHead;
+        flatHead.setFillColor(MUSHROOM_RED);
+        flatHead.setFilled(true);
+        head.add(flatHead);
+        head.add(mushroomHead);
+        return head;
     }
 
     public Rectangle makeMushroomStem(int stemWidth, int stemHeight, int x, int y) {
-        Rectangle mushroomStem = new Rectangle(x + (.3 *MUSHROOM_WIDTH), y + (MUSHROOM_HEIGHT - 1), stemWidth, stemHeight);
+        Rectangle mushroomStem = new Rectangle(x + (.2 *MUSHROOM_WIDTH), y + (MUSHROOM_HEIGHT - (MUSHROOM_HEIGHT * .2)), stemWidth, stemHeight);
         mushroomStem.setFillColor(MUSHROOM_WHITE);
         mushroomStem.setFilled(true);
         return mushroomStem;
     }
 
-    public void makeMushroom(Ellipse head, Rectangle stem) {
+    public void makeMushroom(GraphicsGroup head, Rectangle stem) {
         GraphicsGroup mushroom = new GraphicsGroup();
         mushroom.add(stem);
         mushroom.add(head);
