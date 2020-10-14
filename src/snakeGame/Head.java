@@ -6,7 +6,7 @@ import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
 
 public class Head extends GraphicsGroup{
-    private static final double WIDTH = 20;
+    private static final double WIDTH = 30;
     
     public Head(double xPosition, double yPosition, Color color) {
         makeHead(xPosition, yPosition, color);
@@ -14,9 +14,9 @@ public class Head extends GraphicsGroup{
 
     public GraphicsGroup makeEye(double x, double y) {
         GraphicsGroup eye = new GraphicsGroup();
-        Ellipse iris = new Ellipse(x, y, WIDTH * 0.4, WIDTH * 0.4);
+        Ellipse iris = new Ellipse(x, y, WIDTH * 0.3, WIDTH * 0.3);
         iris.setFillColor(Color.white);
-        iris.setStrokeColor(Color.white);
+        iris.setStrokeColor(Color.black);
         Ellipse pupil = new Ellipse(x + WIDTH * 0.18, y + WIDTH * 0.07, WIDTH * 0.1, WIDTH * 0.1);
         pupil.setFillColor(Color.black);
         eye.add(iris);
@@ -30,10 +30,12 @@ public class Head extends GraphicsGroup{
         headShape.setFillColor(color);
         headShape.setStrokeColor(color);
         head.add(headShape);
-        head.add(makeEye(x, y + WIDTH * 0.2));
-        head.add(makeEye(x + WIDTH * 0.6, y + WIDTH * 0.2));
+        head.add(makeEye(x + WIDTH * 0.7, y + WIDTH * 0.1));
+        head.add(makeEye(x + WIDTH * 0.7, y + WIDTH * 0.6));
         add(head);
 
     }
+
+
 
 }
