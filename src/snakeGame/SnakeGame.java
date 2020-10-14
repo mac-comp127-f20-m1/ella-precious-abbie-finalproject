@@ -8,7 +8,7 @@ public class SnakeGame {
     private CanvasWindow canvas;
 
     public static void main(String[] args) {
-        SnakeGame snakeGame= new SnakeGame();
+        SnakeGame snakeGame = new SnakeGame();
         
     }
 
