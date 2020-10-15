@@ -29,12 +29,32 @@ public class Mushroom extends GraphicsGroup {
         Ellipse mushroomHead = new Ellipse(x, y, mushroomWidth, mushroomHeight);
         Rectangle flatHead = new Rectangle(x, y + (mushroomHeight *.5), mushroomWidth, (mushroomHeight *.5));
         GraphicsGroup head = new GraphicsGroup();
+        Ellipse bigCircle1 = new Ellipse(x + (MUSHROOM_WIDTH * .2), y + (MUSHROOM_HEIGHT *.15), MUSHROOM_HEIGHT *.5, MUSHROOM_HEIGHT *.5);
+        Ellipse bigCircle2 = new Ellipse(x + (MUSHROOM_WIDTH * .55), y + (MUSHROOM_HEIGHT *.5), MUSHROOM_HEIGHT *.5, MUSHROOM_HEIGHT *.5);
+        Ellipse smallCircle1 = new Ellipse(x + (MUSHROOM_WIDTH * .56), y + (MUSHROOM_HEIGHT *.03), MUSHROOM_HEIGHT *.3, MUSHROOM_HEIGHT *.3);
+        Ellipse smallCircle2 = new Ellipse(x + (MUSHROOM_WIDTH * .03), y + (MUSHROOM_HEIGHT *.7), MUSHROOM_HEIGHT *.2, MUSHROOM_HEIGHT *.2);
+        Ellipse smallCircle3 = new Ellipse(x + (MUSHROOM_WIDTH * .85), y + (MUSHROOM_HEIGHT *.3), MUSHROOM_HEIGHT *.2, MUSHROOM_HEIGHT *.2);
         mushroomHead.setFillColor(MUSHROOM_RED);
         mushroomHead.setFilled(true);
         flatHead.setFillColor(MUSHROOM_RED);
         flatHead.setFilled(true);
+        bigCircle1.setFillColor(MUSHROOM_WHITE);
+        bigCircle1.setFilled(true);
+        bigCircle2.setFillColor(MUSHROOM_WHITE);
+        bigCircle2.setFilled(true);
+        smallCircle1.setFillColor(MUSHROOM_WHITE);
+        smallCircle1.setFilled(true);
+        smallCircle2.setFillColor(MUSHROOM_WHITE);
+        smallCircle2.setFilled(true);
+        smallCircle3.setFillColor(MUSHROOM_WHITE);
+        smallCircle3.setFilled(true);
         head.add(flatHead);
         head.add(mushroomHead);
+        head.add(bigCircle1);
+        head.add(bigCircle2);
+        head.add(smallCircle1);
+        head.add(smallCircle2);
+        head.add(smallCircle3);
         return head;
     }
 
