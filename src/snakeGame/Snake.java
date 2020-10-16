@@ -21,7 +21,7 @@ public class Snake extends GraphicsGroup {
     }
 
     public boolean checkWallCollision(double canvasSize) {
-        if (getX() < 0 || getX() > canvasSize || getY() < 0 || getY() < canvasSize) {
+        if (getX() < 0 || getX() > canvasSize || getY() < 0 || getY() > canvasSize) {
             return true;
         }
         return false;
