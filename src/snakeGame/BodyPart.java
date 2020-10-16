@@ -20,11 +20,7 @@ public class BodyPart extends Rectangle {
     public void setColor(Color color) {
         setFillColor(color);
         setStrokeColor(color);
-    }
-
-
-
-
-
-    
+    } 
 }
+
+
