@@ -24,7 +24,7 @@ public class SnakeGame {
     public void setUpGame() {
         group = new GraphicsGroup();
 
-        mushroom = new Mushroom(50, 25, 30, 10, 400, 400);
+        mushroom = new Mushroom(25, 12, 15, 5, 400, 400);
         group.add(mushroom);
 
         part = new BodyPart(300, 300, Color.green);
