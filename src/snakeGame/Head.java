@@ -57,29 +57,54 @@ public class Head extends GraphicsGroup {
     public void moveAroundHelper(CanvasWindow canvas) {
         canvas.onKeyDown(event -> {
             if (event.getKey() == Key.LEFT_ARROW) {
-                if (directionX == 0) {
+                if (directionX == 0 && directionY == 1) {
                     directionX = -1;
                     directionY = 0;
+                    head.rotateBy(90);
                 }
+                else if (directionX == 0 && directionY == -1) {
+                    directionX = -1;
+                    directionY = 0;
+                    head.rotateBy(270);
+                }  
             }
             if (event.getKey() == Key.RIGHT_ARROW) {
-                if (directionX == 0) {
+                if (directionX == 0 && directionY == 1) {
                     directionX = 1;
                     directionY = 0;
+                    head.rotateBy(270);
                 }
-
+                else if (directionX == 0 && directionY == -1) {
+                    directionX = 1;
+                    directionY = 0;
+                    head.rotateBy(90);
+                }
             }
             if (event.getKey() == Key.DOWN_ARROW) {
-                if (directionY == 0) {
+                if (directionY == 0 && directionX == 1) {
                     directionX = 0;
                     directionY = 1;
+                    head.rotateBy(90);
+                }
+                else if (directionY == 0 && directionX == -1) {
+                    directionX = 0;
+                    directionY = 1;
+                    head.rotateBy(270);
                 }
             }
             if (event.getKey() == Key.UP_ARROW) {
-                if (directionY == 0) {
+                if (directionY == 0 && directionX == 1) {
                     directionX = 0;
                     directionY = -1;
+                    head.rotateBy(270);
                 }
+                else if (directionY == 0 && directionX == -1) {
+                    directionX = 0;
+                    directionY = -1;
+                    head.rotateBy(90);
+                }
+
+                
             }
         });
 
