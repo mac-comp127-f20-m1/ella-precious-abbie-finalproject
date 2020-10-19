@@ -7,25 +7,26 @@ import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.events.Key;
 
-public class Head extends GraphicsGroup{
+public class Head extends GraphicsGroup {
     private static final double WIDTH = 30;
     private GraphicsGroup head;
     private GraphicsGroup eye;
     private int directionX = 1;
     private int directionY = 0;
-    private double x;
-    private double y;
-    
+    private Ellipse iris;
+    private Ellipse pupil;
+
+
     public Head(double xPosition, double yPosition, Color color) {
         makeHead(xPosition, yPosition, color);
     }
 
     public GraphicsGroup makeEye(double x, double y) {
-        GraphicsGroup eye = new GraphicsGroup();
-        Ellipse iris = new Ellipse(x, y, WIDTH * 0.3, WIDTH * 0.3);
+        eye = new GraphicsGroup();
+        iris = new Ellipse(x, y, WIDTH * 0.3, WIDTH * 0.3);
         iris.setFillColor(Color.white);
         iris.setStrokeColor(Color.black);
-        Ellipse pupil = new Ellipse(x + WIDTH * 0.18, y + WIDTH * 0.07, WIDTH * 0.1, WIDTH * 0.1);
+        pupil = new Ellipse(x + WIDTH * 0.18, y + WIDTH * 0.07, WIDTH * 0.1, WIDTH * 0.1);
         pupil.setFillColor(Color.black);
         eye.add(iris);
         eye.add(pupil);
@@ -49,11 +50,11 @@ public class Head extends GraphicsGroup{
     }
 
     public void moveAround(CanvasWindow canvas) {
-        moveHeadHelper(canvas);
-        head.moveBy(directionX,directionY);
+        moveAroundHelper(canvas);
+        head.moveBy(directionX, directionY);
     }
 
-    public void moveHeadHelper(CanvasWindow canvas) {
+    public void moveAroundHelper(CanvasWindow canvas) {
         canvas.onKeyDown(event -> {
             if (event.getKey() == Key.LEFT_ARROW) {
                 if (directionX == 0) {
@@ -66,6 +67,7 @@ public class Head extends GraphicsGroup{
                     directionX = 1;
                     directionY = 0;
                 }
+
             }
             if (event.getKey() == Key.DOWN_ARROW) {
                 if (directionY == 0) {
@@ -80,9 +82,7 @@ public class Head extends GraphicsGroup{
                 }
             }
         });
-        
+
     }
-
-
 
 }

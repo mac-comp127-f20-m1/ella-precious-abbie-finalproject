@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
-import edu.macalester.graphics.events.Key;
 
 public class SnakeGame {
     private static final int CANVAS_WIDTH = 700;
@@ -29,7 +28,7 @@ public class SnakeGame {
 
         mushroom = new Mushroom(50, 25, 30, 10, 400, 400);
         group.add(mushroom);
-        
+
         part = new BodyPart(300, 300, Color.green);
         group.add(part);
         head = new Head(200, 200, Color.red);
@@ -48,7 +47,6 @@ public class SnakeGame {
     public void moveHead(Head head) {
         head.moveAround(canvas);
     }
-
 
 
     public static void main(String[] args) {
