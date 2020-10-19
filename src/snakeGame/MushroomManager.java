@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.GraphicsGroup;
+
 import java.util.Random;
 
 public class MushroomManager {
@@ -30,6 +32,8 @@ public class MushroomManager {
         for (int i = 0; i < NUM_MUSHROOMS; i++) {
             randX = randXGenerator.nextInt(SnakeGame.getCanvasWidth() - MUSHROOM_WIDTH);
             randY = randYGenerator.nextInt(SnakeGame.getCanvasHeight() - (MUSHROOM_HEIGHT + STEM_HEIGHT));
+            // System.out.println("x: " + randX);
+            // System.out.println("Y: " + randY);
             Mushroom mushroom = new Mushroom(MUSHROOM_WIDTH, MUSHROOM_HEIGHT, STEM_WIDTH, STEM_HEIGHT, randX, randY);
             canvas.add(mushroom);
             mushrooms.add(mushroom);
@@ -54,5 +58,20 @@ public class MushroomManager {
 
     public int getNumberOfMushrooms() {
         return mushrooms.size();
+    }
+
+    public void testHit(Head head) {
+        removeMushroomIfNotNull(head.checkHeadAndMushroomCollision(canvas));
+    }
+
+    public void removeMushroomIfNotNull(Mushroom m) {
+        if (m != null) {
+            for (Mushroom mushroom : mushrooms) {
+                if(m == mushroom) {
+                    removeMushroom(m);
+                    return;
+                }
+            }
+        }
     }
 }

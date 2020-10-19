@@ -79,5 +79,6 @@ public class Mushroom extends GraphicsGroup {
     public int getMushroomTotalWidth() {
         return mushroomWidth;
     }
+
     
 }

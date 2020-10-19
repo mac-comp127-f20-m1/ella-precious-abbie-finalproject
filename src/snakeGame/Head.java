@@ -5,6 +5,8 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.events.Key;
 
 public class Head extends GraphicsGroup {
@@ -108,6 +110,31 @@ public class Head extends GraphicsGroup {
             }
         });
 
+    }
+
+    public Mushroom checkHeadAndMushroomCollision(CanvasWindow canvas) {
+        System.out.println("Head x                               " + head.getX());
+        GraphicsObject leftCollisionElement = canvas.getElementAt(head.getX() - .0001, head.getY() + (WIDTH/2));
+        GraphicsObject rightCollisionElement = canvas.getElementAt(head.getX() + WIDTH + .0001, head.getY() + (WIDTH/2));
+        GraphicsObject topCollisionElement = canvas.getElementAt(head.getX() + (WIDTH/2), head.getY() - .0001);
+        GraphicsObject bottomCollisionElement = canvas.getElementAt(head.getX() + (WIDTH/2), head.getY() + WIDTH + .0001);
+        System.out.println("left                               " + leftCollisionElement);
+        System.out.println("right                              " + rightCollisionElement);
+        System.out.println("top                                " + topCollisionElement);
+        System.out.println("bottom                             " + bottomCollisionElement);
+        if (leftCollisionElement instanceof GraphicsGroup) {
+            return (Mushroom) leftCollisionElement;
+        }
+        else if (rightCollisionElement instanceof GraphicsGroup) {
+            return (Mushroom) rightCollisionElement;
+        }
+        else if (topCollisionElement instanceof GraphicsGroup) {
+            return (Mushroom) topCollisionElement;
+        }
+        else if (bottomCollisionElement instanceof GraphicsGroup) {
+            return (Mushroom) bottomCollisionElement;
+        }
+        return null;
     }
 
 }

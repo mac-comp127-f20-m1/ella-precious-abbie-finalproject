@@ -6,8 +6,8 @@ import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 
 public class SnakeGame {
-    private static final int CANVAS_WIDTH = 700;
-    private static final int CANVAS_HEIGHT = 700;
+    private static final int CANVAS_WIDTH = 600;
+    private static final int CANVAS_HEIGHT = 600;
     private CanvasWindow canvas;
     private BodyPart part;
     private Head head;
@@ -40,6 +40,7 @@ public class SnakeGame {
         
         canvas.animate(() -> {if(animating){
             moveHead(head);
+            mushroomManager.testHit(head);
         }});
 
     }
