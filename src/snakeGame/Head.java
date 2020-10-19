@@ -2,11 +2,19 @@ package snakeGame;
 
 import java.awt.Color;
 
+import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.events.Key;
 
 public class Head extends GraphicsGroup{
     private static final double WIDTH = 30;
+    private GraphicsGroup head;
+    private GraphicsGroup eye;
+    private int directionX = 1;
+    private int directionY = 0;
+    private double x;
+    private double y;
     
     public Head(double xPosition, double yPosition, Color color) {
         makeHead(xPosition, yPosition, color);
@@ -25,7 +33,7 @@ public class Head extends GraphicsGroup{
     }
 
     public void makeHead(double x, double y, Color color) {
-        GraphicsGroup head = new GraphicsGroup();
+        head = new GraphicsGroup();
         Ellipse headShape = new Ellipse(x, y, WIDTH, WIDTH);
         headShape.setFillColor(color);
         headShape.setStrokeColor(color);
@@ -34,6 +42,45 @@ public class Head extends GraphicsGroup{
         head.add(makeEye(x + WIDTH * 0.7, y + WIDTH * 0.6));
         add(head);
 
+    }
+
+    public GraphicsGroup getHead() {
+        return this.head;
+    }
+
+    public void moveAround(CanvasWindow canvas) {
+        moveHeadHelper(canvas);
+        head.moveBy(directionX,directionY);
+    }
+
+    public void moveHeadHelper(CanvasWindow canvas) {
+        canvas.onKeyDown(event -> {
+            if (event.getKey() == Key.LEFT_ARROW) {
+                if (directionX == 0) {
+                    directionX = -1;
+                    directionY = 0;
+                }
+            }
+            if (event.getKey() == Key.RIGHT_ARROW) {
+                if (directionX == 0) {
+                    directionX = 1;
+                    directionY = 0;
+                }
+            }
+            if (event.getKey() == Key.DOWN_ARROW) {
+                if (directionY == 0) {
+                    directionX = 0;
+                    directionY = 1;
+                }
+            }
+            if (event.getKey() == Key.UP_ARROW) {
+                if (directionY == 0) {
+                    directionX = 0;
+                    directionY = -1;
+                }
+            }
+        });
+        
     }
 
 
