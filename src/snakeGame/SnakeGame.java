@@ -9,11 +9,11 @@ public class SnakeGame {
     private static final int CANVAS_WIDTH = 700;
     private static final int CANVAS_HEIGHT = 700;
     private CanvasWindow canvas;
-    private Mushroom mushroom;
     private BodyPart part;
     private Head head;
     private GraphicsGroup group;
     private Boolean animating;
+    private MushroomManager mushroomManager;
 
 
     public SnakeGame() {
@@ -26,8 +26,8 @@ public class SnakeGame {
     public void setUpGame() {
         group = new GraphicsGroup();
 
-        mushroom = new Mushroom(50, 25, 30, 10, 400, 400);
-        group.add(mushroom);
+    
+        mushroomManager = new MushroomManager(canvas);
 
         part = new BodyPart(300, 300, Color.green);
         group.add(part);
@@ -46,6 +46,14 @@ public class SnakeGame {
 
     public void moveHead(Head head) {
         head.moveAround(canvas);
+    }
+
+    public static int getCanvasHeight() {
+        return CANVAS_HEIGHT;
+    }
+
+    public static int getCanvasWidth() {
+        return CANVAS_WIDTH;
     }
 
     public static void main(String[] args) {

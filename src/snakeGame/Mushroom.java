@@ -8,18 +8,18 @@ import java.awt.Color;
 public class Mushroom extends GraphicsGroup {
     private static final Color MUSHROOM_RED = new Color(237,120,131);
     private static final Color MUSHROOM_WHITE = new Color(247, 250, 250);
-    private int MUSHROOM_WIDTH;
-    private int MUSHROOM_HEIGHT;
-    private int STEM_WIDTH;
-    private int STEM_HEIGHT;
+    private int mushroomWidth;
+    private int mushroomHeight;
+    private int stemWidth;
+    private int stemHeight;
     private int x;
     private int y;
 
     public Mushroom(int mushroomWidth, int mushroomHeight, int stemWidth, int stemHeight, int x, int y) {
-        this.MUSHROOM_HEIGHT = mushroomHeight;
-        this.MUSHROOM_WIDTH = mushroomWidth;
-        this.STEM_HEIGHT = stemHeight;
-        this.STEM_WIDTH = stemWidth;
+        this.mushroomHeight = mushroomHeight;
+        this.mushroomWidth = mushroomWidth;
+        this.stemHeight = stemHeight;
+        this.stemWidth = stemWidth;
         this.x = x;
         this.y = y;
         makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, x, y), makeMushroomStem(stemWidth, stemHeight, x, y));
@@ -29,11 +29,11 @@ public class Mushroom extends GraphicsGroup {
         Ellipse mushroomHead = new Ellipse(x, y, mushroomWidth, mushroomHeight);
         Rectangle flatHead = new Rectangle(x, y + (mushroomHeight *.5), mushroomWidth, (mushroomHeight *.5));
         GraphicsGroup head = new GraphicsGroup();
-        Ellipse bigCircle1 = new Ellipse(x + (MUSHROOM_WIDTH * .2), y + (MUSHROOM_HEIGHT *.15), MUSHROOM_HEIGHT *.5, MUSHROOM_HEIGHT *.5);
-        Ellipse bigCircle2 = new Ellipse(x + (MUSHROOM_WIDTH * .55), y + (MUSHROOM_HEIGHT *.5), MUSHROOM_HEIGHT *.5, MUSHROOM_HEIGHT *.5);
-        Ellipse smallCircle1 = new Ellipse(x + (MUSHROOM_WIDTH * .56), y + (MUSHROOM_HEIGHT *.03), MUSHROOM_HEIGHT *.3, MUSHROOM_HEIGHT *.3);
-        Ellipse smallCircle2 = new Ellipse(x + (MUSHROOM_WIDTH * .03), y + (MUSHROOM_HEIGHT *.7), MUSHROOM_HEIGHT *.2, MUSHROOM_HEIGHT *.2);
-        Ellipse smallCircle3 = new Ellipse(x + (MUSHROOM_WIDTH * .85), y + (MUSHROOM_HEIGHT *.3), MUSHROOM_HEIGHT *.2, MUSHROOM_HEIGHT *.2);
+        Ellipse bigCircle1 = new Ellipse(x + (mushroomWidth * .2), y + (mushroomHeight *.15), mushroomHeight *.5, mushroomHeight *.5);
+        Ellipse bigCircle2 = new Ellipse(x + (mushroomWidth * .55), y + (mushroomHeight *.5), mushroomHeight *.5, mushroomHeight *.5);
+        Ellipse smallCircle1 = new Ellipse(x + (mushroomWidth * .56), y + (mushroomHeight *.03), mushroomHeight *.3, mushroomHeight *.3);
+        Ellipse smallCircle2 = new Ellipse(x + (mushroomWidth * .03), y + (mushroomHeight *.7), mushroomHeight *.2, mushroomHeight *.2);
+        Ellipse smallCircle3 = new Ellipse(x + (mushroomWidth * .85), y + (mushroomHeight *.3), mushroomHeight *.2, mushroomHeight *.2);
         mushroomHead.setFillColor(MUSHROOM_RED);
         mushroomHead.setFilled(true);
         flatHead.setFillColor(MUSHROOM_RED);
@@ -59,7 +59,7 @@ public class Mushroom extends GraphicsGroup {
     }
 
     public Rectangle makeMushroomStem(int stemWidth, int stemHeight, int x, int y) {
-        Rectangle mushroomStem = new Rectangle(x + (.2 *MUSHROOM_WIDTH), y + (MUSHROOM_HEIGHT - (MUSHROOM_HEIGHT * .2)), stemWidth, stemHeight);
+        Rectangle mushroomStem = new Rectangle(x + (.2 *mushroomWidth), y + (mushroomHeight - (mushroomHeight * .2)), stemWidth, stemHeight);
         mushroomStem.setFillColor(MUSHROOM_WHITE);
         mushroomStem.setFilled(true);
         return mushroomStem;
@@ -70,6 +70,14 @@ public class Mushroom extends GraphicsGroup {
         mushroom.add(stem);
         mushroom.add(head);
         add(mushroom);
+    }
+
+    public int getMushroomTotalHeight() {
+        return mushroomHeight + stemHeight;
+    }
+
+    public int getMushroomTotalWidth() {
+        return mushroomWidth;
     }
     
 }
