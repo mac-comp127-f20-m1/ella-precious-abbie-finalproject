@@ -19,8 +19,8 @@ public class Head extends GraphicsGroup {
     private Ellipse pupil;
 
 
-    public Head(double xPosition, double yPosition, Color color) {
-        makeHead(xPosition, yPosition, color);
+    public Head(Color color) {
+        makeHead(0, 0, color);
     }
 
     public GraphicsGroup makeEye(double x, double y) {
