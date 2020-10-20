@@ -4,13 +4,13 @@ import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.GraphicsObject;
 
 public class SnakeGame {
     private static final int CANVAS_WIDTH = 600;
     private static final int CANVAS_HEIGHT = 600;
     private CanvasWindow canvas;
-    private BodyPart part;
-    private Head head;
+    private Snake snake;
     private GraphicsGroup group;
     private Boolean animating;
     private MushroomManager mushroomManager;
@@ -25,28 +25,29 @@ public class SnakeGame {
 
     public void setUpGame() {
         group = new GraphicsGroup();
-
-    
+        
         mushroomManager = new MushroomManager(canvas);
+        for (Mushroom mushroom : mushroomManager.getMushrooms()) {
+            group.add(mushroom);
+        }
 
-        part = new BodyPart(300, 300, Color.green);
-        group.add(part);
-        head = new Head(200, 200, Color.red);
-        group.add(head);
+        snake = new Snake(Color.red, canvas);
+        for (GraphicsObject part : snake.getBodyGraphics()) {
+            group.add(part);
+        }
 
         canvas.add(group);
 
         animating = true;
         
-        canvas.animate(() -> {if(animating){
-            moveHead(head);
-            mushroomManager.testHit(head);
-        }});
+        canvas.animate(() -> {
+            if(animating && !snake.bodyCollision() &&
+            !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT)) {
+                snake.moveHead();
+                mushroomManager.testHit(snake.getHead());
+            }
+        });
 
-    }
-
-    public void moveHead(Head head) {
-        head.moveAround(canvas);
     }
 
     public static int getCanvasHeight() {

@@ -4,55 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
-import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.Ellipse;
+import edu.macalester.graphics.GraphicsObject;
+import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 
-public class Snake extends GraphicsGroup {
-    private Head head;
-    private List<BodyPart> body;
-    private static final double SIDE_LENGTH = 10;
-    private Color color;
+public class Snake {
+    private static final double BODY_WIDTH = 15;
 
-    public Snake(double xPosition, double yPosition, Color color){
-        head = new Head(xPosition, yPosition, color);
+    private Head head;
+    private List<GraphicsObject> body;
+   
+    private Color color;
+    private CanvasWindow canvas;
+
+    public Snake(Color color, CanvasWindow canvas) {
+        head = new Head(color);
         body = new ArrayList<>();
+        body.add(head);
+        
         this.color = color;
+        this.canvas = canvas;
     }
 
-    public boolean checkWallCollision(double canvasSize) {
-        if (getX() < 0 || getX() > canvasSize || getY() < 0 || getY() > canvasSize) {
+    public List<GraphicsObject> getBodyGraphics() {
+        return body;
+    }
+
+    public Head getHead() {
+        return head;
+    }
+
+    public boolean wallCollision(double canvasWidth, double canvasHeight) {
+        if (head.getHead().getX() < 0 || head.getHead().getX() + 30 > canvasWidth 
+        || head.getHead().getY() < 0 || head.getHead().getY() + 30 > canvasHeight) {
             return true;
         }
         return false;
     }
 
-    public boolean checkBodyCollision() {
-        for (BodyPart part : body) {
+    public boolean bodyCollision() {
+        for (GraphicsObject part : body) {
             if (part.getCenter() == head.getCenter()) {
                 return true;
             }
         }
         return false;
     }
-
-    public boolean checkMushroomCollision(CanvasWindow canvas) {
-        if (canvas.getElementAt(head.getCenter()) != null && !checkBodyCollision()) {
-            canvas.remove(getElementAt(head.getCenter()));
-            makeLonger();
-            return true;
-        }
-        return false;
+   
+    public void moveHead() {
+        head.moveAround(canvas);
     }
-
-    public void makeLonger() {
-        BodyPart part = new BodyPart(body.get(body.size()).getX() - SIDE_LENGTH, 
-            body.get(body.size()).getY(), color);
-        body.add(part);
-        add(part);
-    }
-
-
 
 }
 

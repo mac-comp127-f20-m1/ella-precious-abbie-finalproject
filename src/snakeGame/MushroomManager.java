@@ -40,6 +40,10 @@ public class MushroomManager {
         }
     }
 
+    public List<Mushroom> getMushrooms() {
+        return mushrooms;
+    }
+
     private void removeMushroom(Mushroom mushroom) {
         canvas.remove(mushroom);
         mushrooms.remove(mushroom);
