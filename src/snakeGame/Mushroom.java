@@ -69,7 +69,7 @@ public class Mushroom extends GraphicsGroup {
         GraphicsGroup mushroom = new GraphicsGroup();
         mushroom.add(stem);
         mushroom.add(head);
-        mushroom.setPosition(x, y);
+        mushroom.setPosition((double)x, (double)y);
         add(mushroom);
     }
 

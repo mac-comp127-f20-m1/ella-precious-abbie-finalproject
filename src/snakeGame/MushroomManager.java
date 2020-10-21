@@ -65,16 +65,16 @@ public class MushroomManager {
         return mushrooms.size();
     }
 
-    public Mushroom findMushroomAtPosition(Point point) {
+    public void findMushroomAtPosition(Point point) {
         for (Mushroom mushroom : mushrooms) {
             System.out.println("Head center:                 " + point);
             System.out.println("Mushroom center:                   " + mushroom.getCenter());
             if ((point.getX() > mushroom.getX() && point.getX() < mushroom.getX() + mushroom.getWidth()) && 
             (point.getY() > mushroom.getY() && point.getY() < mushroom.getY() + mushroom.getHeight())) {
-                return mushroom;
+                removeMushroom(mushroom);
             }
         }
-        return null;
+        //return null;
     }
 
     // public void testHit(Head head) {

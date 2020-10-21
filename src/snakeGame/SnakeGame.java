@@ -22,11 +22,11 @@ public class SnakeGame {
         setUpGame(); 
     }
 
-    public void testHeadAndMushroomCollision() {
-        if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
-            mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
-        }
-    }
+    // public void testHeadAndMushroomCollision() {
+    //     if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
+    //         mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
+    //     }
+    // }
 
 
     public void setUpGame() {
@@ -52,7 +52,8 @@ public class SnakeGame {
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT)) {
                 snake.moveHead();
                 //mushroomManager.testHit(snake.getHead());
-                testHeadAndMushroomCollision();
+                //testHeadAndMushroomCollision();
+                mushroomManager.findMushroomAtPosition(snake.getHead().getCenter());
                 snake.moveBody();
             }
         });
