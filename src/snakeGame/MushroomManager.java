@@ -3,7 +3,6 @@ package snakeGame;
 import java.util.ArrayList;
 import java.util.List;
 
-import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.Point;
 
@@ -33,8 +32,6 @@ public class MushroomManager {
         for (int i = 0; i < NUM_MUSHROOMS; i++) {
             randX = randXGenerator.nextInt(SnakeGame.getCanvasWidth() - MUSHROOM_WIDTH);
             randY = randYGenerator.nextInt(SnakeGame.getCanvasHeight() - (MUSHROOM_HEIGHT + STEM_HEIGHT));
-            // System.out.println("x: " + randX);
-            // System.out.println("Y: " + randY);
             Mushroom mushroom = new Mushroom(MUSHROOM_WIDTH, MUSHROOM_HEIGHT, STEM_WIDTH, STEM_HEIGHT, randX, randY);
             parentGroup.add(mushroom);
             mushrooms.add(mushroom);
@@ -86,19 +83,4 @@ public class MushroomManager {
         }
         return false;
     }
-
-    // public void testHit(Head head) {
-    //     removeMushroomIfNotNull(head.checkHeadAndMushroomCollision(canvas));
-    // }
-
-    // public void removeMushroomIfNotNull(Mushroom m) {
-    //     if (m != null) {
-    //         for (Mushroom mushroom : mushrooms) {
-    //             if(m == mushroom) {
-    //                 removeMushroom(m);
-    //                 return;
-    //             }
-    //         }
-    //     }
-    // }
 }

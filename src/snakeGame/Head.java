@@ -5,8 +5,6 @@ import java.awt.Color;
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
-import edu.macalester.graphics.GraphicsObject;
-import edu.macalester.graphics.Rectangle;
 import edu.macalester.graphics.events.Key;
 
 public class Head extends GraphicsGroup {
