@@ -19,7 +19,7 @@ public class SnakeGame {
 
     public SnakeGame() {
         canvas = new CanvasWindow("Snake Game!", CANVAS_WIDTH, CANVAS_HEIGHT);
-        canvas.setBackground(Color.blue);
+        canvas.setBackground(new Color(213, 236, 227));
         setUpGame(); 
     }
 
