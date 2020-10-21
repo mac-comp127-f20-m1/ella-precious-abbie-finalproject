@@ -14,6 +14,7 @@ public class SnakeGame {
     private Boolean animating;
     private MushroomManager mushroomManager;
     private Player player;
+    private int levels = 1;
     // private int lives = 3;
 
 
@@ -64,8 +65,6 @@ public class SnakeGame {
 
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-
-            int levels = 1;
             if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 && levels < 2) {
                 levels += 1;
                 System.out.println("                                               Level " + levels);
@@ -74,7 +73,7 @@ public class SnakeGame {
                 // canvas.closeWindow();
                 return true;
             }
-            else if (levels >= 2) {
+            if (levels >= 2) {
                 System.out.println("                              You win !");
                 canvas.closeWindow();
                 return true;
