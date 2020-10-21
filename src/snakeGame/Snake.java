@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.Ellipse;
+import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsObject;
 import edu.macalester.graphics.Point;
 
@@ -17,14 +18,15 @@ public class Snake {
     private List<GraphicsObject> body;
    
     private Color color;
-    private CanvasWindow canvas;
+    private GraphicsGroup parentGroup;
 
-    public Snake(Color color, CanvasWindow canvas) {
+    public Snake(Color color, GraphicsGroup parentGroup) {
         head = new Head(color);
         body = new ArrayList<>();
+        parentGroup.add(head);
 
         this.color = color;
-        this.canvas = canvas;
+        this.parentGroup = parentGroup;
         makeLonger(25);
     }
 
@@ -59,10 +61,11 @@ public class Snake {
             part.setFillColor(color);
             part.setStrokeColor(color);
             body.add(part);
+            parentGroup.add(part);
         } 
     }
 
-    public void moveHead() {
+    public void moveHead(CanvasWindow canvas) {
         head.moveAround(canvas);
     }
 

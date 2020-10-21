@@ -28,11 +28,7 @@ public class SnakeGame {
 
         mushroomManager = new MushroomManager(gameLayer);
 
-        snake = new Snake(Color.red, canvas);
-        for (GraphicsObject part : snake.getBodyGraphics()) {
-            gameLayer.add(part);
-        }
-        gameLayer.add(snake.getHead());
+        snake = new Snake(Color.red, gameLayer);
 
         canvas.add(gameLayer);
 
@@ -41,7 +37,7 @@ public class SnakeGame {
         canvas.animate(() -> {
             if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && lives > 0) {
-                snake.moveHead();
+                snake.moveHead(canvas);
                 mushroomManager.findMushroomAtPosition(snake.getHead().getCenter());
                 snake.moveBody();
             }
