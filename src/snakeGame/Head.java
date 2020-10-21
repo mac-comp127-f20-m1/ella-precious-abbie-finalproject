@@ -13,7 +13,7 @@ public class Head extends GraphicsGroup {
     private static final double WIDTH = 30;
     private GraphicsGroup head;
     private GraphicsGroup eye;
-    private int directionX = 5;
+    private int directionX = 2;
     private int directionY = 0;
     private Ellipse iris;
     private Ellipse pupil;
@@ -59,50 +59,50 @@ public class Head extends GraphicsGroup {
     public void moveAroundHelper(CanvasWindow canvas) {
         canvas.onKeyDown(event -> {
             if (event.getKey() == Key.LEFT_ARROW) {
-                if (directionX == 0 && directionY == 5) {
-                    directionX = -5;
+                if (directionX == 0 && directionY == 2) {
+                    directionX = -2;
                     directionY = 0;
                     head.rotateBy(90);
                 }
-                else if (directionX == 0 && directionY == -5) {
-                    directionX = -5;
+                else if (directionX == 0 && directionY == -2) {
+                    directionX = -2;
                     directionY = 0;
                     head.rotateBy(270);
                 }  
             }
             if (event.getKey() == Key.RIGHT_ARROW) {
-                if (directionX == 0 && directionY == 5) {
-                    directionX = 5;
+                if (directionX == 0 && directionY == 2) {
+                    directionX = 2;
                     directionY = 0;
                     head.rotateBy(270);
                 }
-                else if (directionX == 0 && directionY == -5) {
-                    directionX = 5;
+                else if (directionX == 0 && directionY == -2) {
+                    directionX = 2;
                     directionY = 0;
                     head.rotateBy(90);
                 }
             }
             if (event.getKey() == Key.DOWN_ARROW) {
-                if (directionY == 0 && directionX == 5) {
+                if (directionY == 0 && directionX == 2) {
                     directionX = 0;
-                    directionY = 5;
+                    directionY = 2;
                     head.rotateBy(90);
                 }
-                else if (directionY == 0 && directionX == -5) {
+                else if (directionY == 0 && directionX == -2) {
                     directionX = 0;
-                    directionY = 5;
+                    directionY = 2;
                     head.rotateBy(270);
                 }
             }
             if (event.getKey() == Key.UP_ARROW) {
-                if (directionY == 0 && directionX == 5) {
+                if (directionY == 0 && directionX == 2) {
                     directionX = 0;
-                    directionY = -5;
+                    directionY = -2;
                     head.rotateBy(270);
                 }
-                else if (directionY == 0 && directionX == -5) {
+                else if (directionY == 0 && directionX == -2) {
                     directionX = 0;
-                    directionY = -5;
+                    directionY = -2;
                     head.rotateBy(90);
                 }
 
@@ -111,32 +111,5 @@ public class Head extends GraphicsGroup {
         });
 
     }
-
-    
-
-    // public Mushroom checkHeadAndMushroomCollision(CanvasWindow canvas) {
-    //     System.out.println("Head x                               " + head.getX());
-    //     GraphicsObject leftCollisionElement = canvas.getElementAt(head.getX() - .0001, head.getY() + (WIDTH/2));
-    //     GraphicsObject rightCollisionElement = canvas.getElementAt(head.getX() + WIDTH + .0001, head.getY() + (WIDTH/2));
-    //     GraphicsObject topCollisionElement = canvas.getElementAt(head.getX() + (WIDTH/2), head.getY() - .0001);
-    //     GraphicsObject bottomCollisionElement = canvas.getElementAt(head.getX() + (WIDTH/2), head.getY() + WIDTH + .0001);
-    //     System.out.println("left                               " + leftCollisionElement);
-    //     System.out.println("right                              " + rightCollisionElement);
-    //     System.out.println("top                                " + topCollisionElement);
-    //     System.out.println("bottom                             " + bottomCollisionElement);
-    //     if (leftCollisionElement instanceof GraphicsGroup) {
-    //         return (Mushroom) leftCollisionElement;
-    //     }
-    //     else if (rightCollisionElement instanceof GraphicsGroup) {
-    //         return (Mushroom) rightCollisionElement;
-    //     }
-    //     else if (topCollisionElement instanceof GraphicsGroup) {
-    //         return (Mushroom) topCollisionElement;
-    //     }
-    //     else if (bottomCollisionElement instanceof GraphicsGroup) {
-    //         return (Mushroom) bottomCollisionElement;
-    //     }
-    //     return null;
-    // }
 
 }

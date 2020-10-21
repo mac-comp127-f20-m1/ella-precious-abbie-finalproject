@@ -23,20 +23,6 @@ public class SnakeGame {
         setUpGame(); 
     }
 
-    // public void testHeadAndMushroomCollision() {
-    //     if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
-    //         mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
-    //     }
-    // }
-
-    // public boolean testHeadMushroomCollision() {
-    //     if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-
     public void setUpGame() {
         gameLayer = new GraphicsGroup();
 
@@ -56,12 +42,7 @@ public class SnakeGame {
             if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && lives > 0) {
                 snake.moveHead();
-                //mushroomManager.testHit(snake.getHead());
-                //testHeadAndMushroomCollision();
                 mushroomManager.findMushroomAtPosition(snake.getHead().getCenter());
-                // if (testHeadMushroomCollision()) {
-                //     mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
-                // }
                 snake.moveBody();
             }
             else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {
