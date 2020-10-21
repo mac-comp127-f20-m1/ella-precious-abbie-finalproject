@@ -25,7 +25,7 @@ public class Snake {
 
         this.color = color;
         this.canvas = canvas;
-        makeLonger(50);
+        makeLonger(25);
     }
 
     public List<GraphicsObject> getBodyGraphics() {

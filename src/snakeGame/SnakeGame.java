@@ -11,9 +11,10 @@ public class SnakeGame {
     private static final int CANVAS_HEIGHT = 600;
     private CanvasWindow canvas;
     private Snake snake;
-    private GraphicsGroup group;
+    private GraphicsGroup gameLayer;
     private Boolean animating;
     private MushroomManager mushroomManager;
+    private int lives = 3;
 
 
     public SnakeGame() {
@@ -37,26 +38,23 @@ public class SnakeGame {
 
 
     public void setUpGame() {
-        group = new GraphicsGroup();
+        gameLayer = new GraphicsGroup();
 
-        mushroomManager = new MushroomManager(canvas);
-        for (Mushroom mushroom : mushroomManager.getMushrooms()) {
-            group.add(mushroom);
-        }
+        mushroomManager = new MushroomManager(gameLayer);
 
         snake = new Snake(Color.red, canvas);
         for (GraphicsObject part : snake.getBodyGraphics()) {
-            group.add(part);
+            gameLayer.add(part);
         }
-        group.add(snake.getHead());
+        gameLayer.add(snake.getHead());
 
-        canvas.add(group);
+        canvas.add(gameLayer);
 
         animating = true;
         
         canvas.animate(() -> {
             if(animating  && !snake.bodyCollision() &&
-            !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT)) {
+            !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && lives > 0) {
                 snake.moveHead();
                 //mushroomManager.testHit(snake.getHead());
                 //testHeadAndMushroomCollision();
@@ -65,6 +63,10 @@ public class SnakeGame {
                 //     mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
                 // }
                 snake.moveBody();
+            }
+            else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {
+                lives--;
+                System.out.println("lives: " + lives);
             }
         });
 

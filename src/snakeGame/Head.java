@@ -13,7 +13,7 @@ public class Head extends GraphicsGroup {
     private static final double WIDTH = 30;
     private GraphicsGroup head;
     private GraphicsGroup eye;
-    private int directionX = 1;
+    private int directionX = 5;
     private int directionY = 0;
     private Ellipse iris;
     private Ellipse pupil;
@@ -59,50 +59,50 @@ public class Head extends GraphicsGroup {
     public void moveAroundHelper(CanvasWindow canvas) {
         canvas.onKeyDown(event -> {
             if (event.getKey() == Key.LEFT_ARROW) {
-                if (directionX == 0 && directionY == 1) {
-                    directionX = -1;
+                if (directionX == 0 && directionY == 5) {
+                    directionX = -5;
                     directionY = 0;
                     head.rotateBy(90);
                 }
-                else if (directionX == 0 && directionY == -1) {
-                    directionX = -1;
+                else if (directionX == 0 && directionY == -5) {
+                    directionX = -5;
                     directionY = 0;
                     head.rotateBy(270);
                 }  
             }
             if (event.getKey() == Key.RIGHT_ARROW) {
-                if (directionX == 0 && directionY == 1) {
-                    directionX = 1;
+                if (directionX == 0 && directionY == 5) {
+                    directionX = 5;
                     directionY = 0;
                     head.rotateBy(270);
                 }
-                else if (directionX == 0 && directionY == -1) {
-                    directionX = 1;
+                else if (directionX == 0 && directionY == -5) {
+                    directionX = 5;
                     directionY = 0;
                     head.rotateBy(90);
                 }
             }
             if (event.getKey() == Key.DOWN_ARROW) {
-                if (directionY == 0 && directionX == 1) {
+                if (directionY == 0 && directionX == 5) {
                     directionX = 0;
-                    directionY = 1;
+                    directionY = 5;
                     head.rotateBy(90);
                 }
-                else if (directionY == 0 && directionX == -1) {
+                else if (directionY == 0 && directionX == -5) {
                     directionX = 0;
-                    directionY = 1;
+                    directionY = 5;
                     head.rotateBy(270);
                 }
             }
             if (event.getKey() == Key.UP_ARROW) {
-                if (directionY == 0 && directionX == 1) {
+                if (directionY == 0 && directionX == 5) {
                     directionX = 0;
-                    directionY = -1;
+                    directionY = -5;
                     head.rotateBy(270);
                 }
-                else if (directionY == 0 && directionX == -1) {
+                else if (directionY == 0 && directionX == -5) {
                     directionX = 0;
-                    directionY = -1;
+                    directionY = -5;
                     head.rotateBy(90);
                 }
 

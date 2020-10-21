@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class MushroomManager {
 
-    private CanvasWindow canvas;
+    private GraphicsGroup parentGroup;
     private List<Mushroom> mushrooms;
     private static final int MUSHROOM_HEIGHT = 12;
     private static final int MUSHROOM_WIDTH = 25;
@@ -23,9 +23,9 @@ public class MushroomManager {
     private int randX;
     private int randY;
 
-    public MushroomManager(CanvasWindow canvas) {
+    public MushroomManager(GraphicsGroup parentGroup) {
+        this.parentGroup = parentGroup;
         mushrooms = new ArrayList<>();
-        this.canvas = canvas;
         placeMushrooms();
     }
 
@@ -36,7 +36,7 @@ public class MushroomManager {
             // System.out.println("x: " + randX);
             // System.out.println("Y: " + randY);
             Mushroom mushroom = new Mushroom(MUSHROOM_WIDTH, MUSHROOM_HEIGHT, STEM_WIDTH, STEM_HEIGHT, randX, randY);
-            canvas.add(mushroom);
+            parentGroup.add(mushroom);
             mushrooms.add(mushroom);
         }
     }
@@ -46,13 +46,13 @@ public class MushroomManager {
     }
 
     public void removeMushroom(Mushroom mushroom) {
-        canvas.remove(mushroom);
+        parentGroup.remove(mushroom);
         mushrooms.remove(mushroom);
     }
 
     public void removeAllMushrooms() {
         for (Mushroom m : mushrooms) {
-            canvas.remove(m);
+            parentGroup.remove(m);
         }
         mushrooms.clear();
     }
@@ -66,19 +66,19 @@ public class MushroomManager {
     }
 
     public void findMushroomAtPosition(Point point) {
-        for (Mushroom mushroom : mushrooms) {
-            System.out.println("Head center:                 " + point);
-            System.out.println("Mushroom center:                   " + mushroom.getCenter());
-            System.out.println("Mushroom x:         " + mushroom.getX() + "     Mushroom y:          " + mushroom.getY());
-            if ((point.getX() > (mushroom.getCenter().getX() - .5*mushroom.getWidth()) && point.getX() < mushroom.getCenter().getX() + .5*mushroom.getWidth()) && 
-            (point.getY() > mushroom.getCenter().getY() - .5*mushroom.getHeight() && point.getY() < mushroom.getCenter().getY() + .5 *mushroom.getHeight())) {
+        for (Mushroom mushroom : List.copyOf(mushrooms)) {
+
+            // Alternative approach: pick one and delete the other
+            // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
+            // if (mushroom.getCenter().distance(point) < eatingDistance) {
+
+            if (   point.getX() > mushroom.getCenter().getX() - .5*mushroom.getWidth()
+                && point.getX() < mushroom.getCenter().getX() + .5*mushroom.getWidth()
+                && point.getY() > mushroom.getCenter().getY() - .5*mushroom.getHeight()
+                && point.getY() < mushroom.getCenter().getY() + .5*mushroom.getHeight()) {
                 removeMushroom(mushroom);
-                //return true;
-                //return mushroom;
             }
         }
-        //return null;
-        //return false;
     }
 
     // public void testHit(Head head) {

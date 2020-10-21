@@ -12,17 +12,15 @@ public class Mushroom extends GraphicsGroup {
     private int mushroomHeight;
     private int stemWidth;
     private int stemHeight;
-    private int x;
-    private int y;
+    
 
     public Mushroom(int mushroomWidth, int mushroomHeight, int stemWidth, int stemHeight, int x, int y) {
         this.mushroomHeight = mushroomHeight;
         this.mushroomWidth = mushroomWidth;
         this.stemHeight = stemHeight;
         this.stemWidth = stemWidth;
-        this.x = x;
-        this.y = y;
-        makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, 0, 0), makeMushroomStem(stemWidth, stemHeight, 0, 0), x, y);
+        makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, 0, 0), makeMushroomStem(stemWidth, stemHeight, 0, 0));
+        this.setPosition(x, y);
     }
 
     public GraphicsGroup makeMushroomHead(int mushroomHeight, int mushroomWidth, int x, int y) {
@@ -65,11 +63,10 @@ public class Mushroom extends GraphicsGroup {
         return mushroomStem;
     }
 
-    public void makeMushroom(GraphicsGroup head, Rectangle stem, int x, int y) {
+    public void makeMushroom(GraphicsGroup head, Rectangle stem) {
         GraphicsGroup mushroom = new GraphicsGroup();
         mushroom.add(stem);
         mushroom.add(head);
-        mushroom.setPosition((double)x, (double)y);
         add(mushroom);
     }
 
