@@ -38,7 +38,9 @@ public class SnakeGame {
             if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && lives > 0) {
                 snake.moveHead(canvas);
-                mushroomManager.findMushroomAtPosition(snake.getHead().getCenter());
+                if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
+                    snake.makeLonger(25);
+                }
                 snake.moveBody();
             }
             else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {

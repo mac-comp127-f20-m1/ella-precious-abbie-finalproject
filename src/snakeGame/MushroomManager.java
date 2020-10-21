@@ -65,7 +65,7 @@ public class MushroomManager {
         return mushrooms.size();
     }
 
-    public void findMushroomAtPosition(Point point) {
+    public boolean findMushroomAtPosition(Point point) {
         for (Mushroom mushroom : List.copyOf(mushrooms)) {
 
             // Alternative approach: pick one and delete the other
@@ -77,8 +77,10 @@ public class MushroomManager {
                 && point.getY() > mushroom.getCenter().getY() - .5*mushroom.getHeight()
                 && point.getY() < mushroom.getCenter().getY() + .5*mushroom.getHeight()) {
                 removeMushroom(mushroom);
+                return true;
             }
         }
+        return false;
     }
 
     // public void testHit(Head head) {
