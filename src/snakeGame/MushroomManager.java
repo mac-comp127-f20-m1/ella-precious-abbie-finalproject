@@ -65,6 +65,10 @@ public class MushroomManager {
         return mushrooms.size();
     }
 
+    public void placeNewMushroomsOnGameReset() {
+        placeMushrooms();
+    }
+
     public boolean findMushroomAtPosition(Point point) {
         for (Mushroom mushroom : List.copyOf(mushrooms)) {
 
