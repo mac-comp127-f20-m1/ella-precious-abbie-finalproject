@@ -16,9 +16,9 @@ public class Snake {
 
     private Head head;
     private List<GraphicsObject> body;
-   
     private Color color;
     private GraphicsGroup parentGroup;
+    private Player player;
 
     public Snake(Color color, GraphicsGroup parentGroup) {
         head = new Head(color);
@@ -28,6 +28,8 @@ public class Snake {
         this.color = color;
         this.parentGroup = parentGroup;
         makeLonger(25);
+
+        this.player = new Player();
     }
 
     public List<GraphicsObject> getBodyGraphics() {
@@ -83,13 +85,17 @@ public class Snake {
         } 
     }
 
-    public void resetSnakeOnDeath() {
+    public void resetSnakeOnDeath(CanvasWindow canvas) {
         head.setCenter(300, 300);
         for (GraphicsObject part : body) {
             part.setCenter(300, 300);
         }
+
+       
         //moveBody();
     }
+
+
 
 }
 
