@@ -47,7 +47,7 @@ public class Head extends GraphicsGroup {
 
     }
 
-    public GraphicsGroup getHead() {
+    public GraphicsGroup getShape() {
         return this.head;
     }
 

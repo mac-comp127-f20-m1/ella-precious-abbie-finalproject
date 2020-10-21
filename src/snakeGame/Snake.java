@@ -37,8 +37,8 @@ public class Snake {
     }
 
     public boolean wallCollision(double canvasWidth, double canvasHeight) {
-        if (head.getHead().getX() < 0 || head.getHead().getX() + 30 > canvasWidth 
-        || head.getHead().getY() < 0 || head.getHead().getY() + 30 > canvasHeight) {
+        if (head.getShape().getX() < 0 || head.getShape().getX() + 30 > canvasWidth 
+        || head.getShape().getY() < 0 || head.getShape().getY() + 30 > canvasHeight) {
             return true;
         }
         return false;
