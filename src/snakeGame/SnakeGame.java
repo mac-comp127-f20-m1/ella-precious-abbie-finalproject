@@ -28,6 +28,13 @@ public class SnakeGame {
     //     }
     // }
 
+    // public boolean testHeadMushroomCollision() {
+    //     if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
+    //         return true;
+    //     }
+    //     return false;
+    // }
+
 
     public void setUpGame() {
         group = new GraphicsGroup();
@@ -54,6 +61,9 @@ public class SnakeGame {
                 //mushroomManager.testHit(snake.getHead());
                 //testHeadAndMushroomCollision();
                 mushroomManager.findMushroomAtPosition(snake.getHead().getCenter());
+                // if (testHeadMushroomCollision()) {
+                //     mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
+                // }
                 snake.moveBody();
             }
         });
