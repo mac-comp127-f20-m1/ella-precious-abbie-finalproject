@@ -22,7 +22,7 @@ public class Mushroom extends GraphicsGroup {
         this.stemWidth = stemWidth;
         this.x = x;
         this.y = y;
-        makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, x, y), makeMushroomStem(stemWidth, stemHeight, x, y));
+        makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, 0, 0), makeMushroomStem(stemWidth, stemHeight, 0, 0), x, y);
     }
 
     public GraphicsGroup makeMushroomHead(int mushroomHeight, int mushroomWidth, int x, int y) {
@@ -65,10 +65,11 @@ public class Mushroom extends GraphicsGroup {
         return mushroomStem;
     }
 
-    public void makeMushroom(GraphicsGroup head, Rectangle stem) {
+    public void makeMushroom(GraphicsGroup head, Rectangle stem, int x, int y) {
         GraphicsGroup mushroom = new GraphicsGroup();
         mushroom.add(stem);
         mushroom.add(head);
+        mushroom.setPosition(x, y);
         add(mushroom);
     }
 

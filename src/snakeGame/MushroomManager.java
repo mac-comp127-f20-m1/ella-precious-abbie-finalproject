@@ -5,6 +5,7 @@ import java.util.List;
 
 import edu.macalester.graphics.CanvasWindow;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.Point;
 
 import java.util.Random;
 
@@ -44,7 +45,7 @@ public class MushroomManager {
         return mushrooms;
     }
 
-    private void removeMushroom(Mushroom mushroom) {
+    public void removeMushroom(Mushroom mushroom) {
         canvas.remove(mushroom);
         mushrooms.remove(mushroom);
     }
@@ -64,18 +65,30 @@ public class MushroomManager {
         return mushrooms.size();
     }
 
-    public void testHit(Head head) {
-        removeMushroomIfNotNull(head.checkHeadAndMushroomCollision(canvas));
-    }
-
-    public void removeMushroomIfNotNull(Mushroom m) {
-        if (m != null) {
-            for (Mushroom mushroom : mushrooms) {
-                if(m == mushroom) {
-                    removeMushroom(m);
-                    return;
-                }
+    public Mushroom findMushroomAtPosition(Point point) {
+        for (Mushroom mushroom : mushrooms) {
+            System.out.println("Head center:                 " + point);
+            System.out.println("Mushroom center:                   " + mushroom.getCenter());
+            if ((point.getX() > mushroom.getX() && point.getX() < mushroom.getX() + mushroom.getWidth()) && 
+            (point.getY() > mushroom.getY() && point.getY() < mushroom.getY() + mushroom.getHeight())) {
+                return mushroom;
             }
         }
+        return null;
     }
+
+    // public void testHit(Head head) {
+    //     removeMushroomIfNotNull(head.checkHeadAndMushroomCollision(canvas));
+    // }
+
+    // public void removeMushroomIfNotNull(Mushroom m) {
+    //     if (m != null) {
+    //         for (Mushroom mushroom : mushrooms) {
+    //             if(m == mushroom) {
+    //                 removeMushroom(m);
+    //                 return;
+    //             }
+    //         }
+    //     }
+    // }
 }

@@ -22,6 +22,12 @@ public class SnakeGame {
         setUpGame(); 
     }
 
+    public void testHeadAndMushroomCollision() {
+        if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()) != null) {
+            mushroomManager.removeMushroom(mushroomManager.findMushroomAtPosition(snake.getHead().getCenter()));
+        }
+    }
+
 
     public void setUpGame() {
         group = new GraphicsGroup();
@@ -45,7 +51,8 @@ public class SnakeGame {
             if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT)) {
                 snake.moveHead();
-                mushroomManager.testHit(snake.getHead());
+                //mushroomManager.testHit(snake.getHead());
+                testHeadAndMushroomCollision();
                 snake.moveBody();
             }
         });
