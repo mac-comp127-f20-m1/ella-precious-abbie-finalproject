@@ -25,7 +25,7 @@ public class SnakeGame {
 
     public void setUpGame() {
         group = new GraphicsGroup();
-        
+
         mushroomManager = new MushroomManager(canvas);
         for (Mushroom mushroom : mushroomManager.getMushrooms()) {
             group.add(mushroom);
@@ -35,16 +35,18 @@ public class SnakeGame {
         for (GraphicsObject part : snake.getBodyGraphics()) {
             group.add(part);
         }
+        group.add(snake.getHead());
 
         canvas.add(group);
 
         animating = true;
         
         canvas.animate(() -> {
-            if(animating && !snake.bodyCollision() &&
+            if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT)) {
                 snake.moveHead();
                 mushroomManager.testHit(snake.getHead());
+                snake.moveBody();
             }
         });
 

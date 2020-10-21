@@ -22,10 +22,10 @@ public class Snake {
     public Snake(Color color, CanvasWindow canvas) {
         head = new Head(color);
         body = new ArrayList<>();
-        body.add(head);
-        
+
         this.color = color;
         this.canvas = canvas;
+        makeLonger(50);
     }
 
     public List<GraphicsObject> getBodyGraphics() {
@@ -53,8 +53,26 @@ public class Snake {
         return false;
     }
    
+    public void makeLonger(int total) {
+        for (int i = 0; i < total; i++) {
+            Ellipse part = new Ellipse(0, 0, BODY_WIDTH, BODY_WIDTH);
+            part.setFillColor(color);
+            part.setStrokeColor(color);
+            body.add(part);
+        } 
+    }
+
     public void moveHead() {
         head.moveAround(canvas);
+    }
+
+    public void moveBody() {
+        Point newPosition = head.getCenter();
+        for (GraphicsObject part : body) {
+            Point oldPosition = part.getCenter();
+            part.setCenter(newPosition);
+            newPosition = oldPosition;
+        } 
     }
 
 }
