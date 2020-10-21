@@ -58,14 +58,15 @@ public class SnakeGame {
 
     public boolean testWin() {
         int levels = 1;
-        if (!mushroomManager.mushroomsStillExist() && lives > 0 && levels <= 2) {
+        if (!mushroomManager.mushroomsStillExist() && lives > 0 && levels < 2) {
             levels += 1;
+            System.out.println("                                               Level " + levels);
             mushroomManager.placeNewMushroomsOnGameReset();
             // System.out.println("                              You win !");
             // canvas.closeWindow();
             return true;
         }
-        else if (!mushroomManager.mushroomsStillExist() && lives > 0 && levels > 2) {
+        else if (levels >= 2) {
             System.out.println("                              You win !");
             canvas.closeWindow();
             return true;
