@@ -48,23 +48,24 @@ public class Snake {
         return false;
     }
 
-    // public boolean bodyCollision() {
+    public boolean bodyCollision() {
         // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
         // if (mushroom.getCenter().distance(point) < eatingDistance) {
-
-        // for (GraphicsObject part : body) {
-        //     if (part > 5) {
-        //         if (part.getCenter() == head.getCenter()) {
-        //             return true;
-        //         }
-        //     }
-        // }
-        // return false;
-    //}
+        double collisionDistance = (BODY_WIDTH/2) + 15;
+        for (GraphicsObject part : body) {
+            if (body.indexOf(part) > 4) {
+                if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
    
     public void makeLonger(int total) {
         for (int i = 0; i < total; i++) {
-            Ellipse part = new Ellipse(head.getCenter().getX(), head.getCenter().getY(), BODY_WIDTH, BODY_WIDTH);
+            Ellipse part = new Ellipse(0, 0, BODY_WIDTH, BODY_WIDTH);
+            part.setCenter(head.getCenter());
             part.setFillColor(color);
             part.setStrokeColor(color);
             body.add(part);
