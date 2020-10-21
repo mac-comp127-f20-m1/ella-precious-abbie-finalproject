@@ -37,6 +37,9 @@ public class SnakeGame {
         canvas.animate(() -> {
             if(animating  && !snake.bodyCollision() &&
             !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && lives > 0) {
+                if (testWin()) {
+                    return;
+                }
                 snake.moveHead(canvas);
                 if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
                     snake.makeLonger(25);
@@ -45,10 +48,21 @@ public class SnakeGame {
             }
             else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {
                 lives--;
+                snake.resetSnakeOnDeath();
                 System.out.println("lives: " + lives);
+                return;
             }
         });
 
+    }
+
+    public boolean testWin() {
+        if (!mushroomManager.mushroomsStillExist() && lives > 0) {
+            System.out.println("                              You win !");
+            canvas.closeWindow();
+            return true;
+        }
+        return false;
     }
 
     public static int getCanvasHeight() {

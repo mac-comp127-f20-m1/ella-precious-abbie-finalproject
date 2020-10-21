@@ -78,5 +78,13 @@ public class Snake {
         } 
     }
 
+    public void resetSnakeOnDeath() {
+        head.setCenter(300, 300);
+        for (GraphicsObject part : body) {
+            part.setCenter(300, 300);
+        }
+        //moveBody();
+    }
+
 }
 
