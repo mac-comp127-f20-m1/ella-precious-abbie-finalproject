@@ -87,7 +87,7 @@ public class Snake {
     }
 
     public void resetSnakeOnDeath(CanvasWindow canvas) {
-        head.setCenter(300, 300);
+        head.getShape().setCenter(300, 300);
         for (GraphicsObject part : body) {
             part.setCenter(300, 300);
         }
