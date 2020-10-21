@@ -49,7 +49,7 @@ public class SnakeGame {
             snake.moveHead(canvas);
             if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
                 player.addPoint();
-                System.out.println("score:" + player.showScore());
+                System.out.println("                                       score:" + player.showScore());
                 snake.makeLonger(25);
             }
             snake.moveBody();
@@ -57,7 +57,7 @@ public class SnakeGame {
         else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {
             snake.resetSnakeOnDeath(canvas);
             player.loseLife();
-            System.out.println("lives: " + player.showLives());
+            System.out.println("                                       lives: " + player.showLives());
             return;
         }
     }
