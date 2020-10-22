@@ -19,6 +19,7 @@ public class Snake {
     private Color color;
     private GraphicsGroup parentGroup;
     private Player player;
+    private int bodyCollisionRadius;
 
     public Snake(Color color, GraphicsGroup parentGroup) {
         head = new Head(color);
@@ -51,15 +52,15 @@ public class Snake {
     public boolean bodyCollision() {
         // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
         // if (mushroom.getCenter().distance(point) < eatingDistance) {
-        //int count = 0;
-        double collisionDistance = (BODY_WIDTH/2) + 15;
+        bodyCollisionRadius = 0;
+        double collisionDistance = (BODY_WIDTH/2) + 10;
         for (GraphicsObject part : body) {
-            //if (count > 50) {
+            if (bodyCollisionRadius > 25) {
                 if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
                     return true;
                 }
-            //}
-            //count++;
+            }
+            bodyCollisionRadius++;
         }
         return false;
 
@@ -100,7 +101,7 @@ public class Snake {
     public void resetSnakeOnDeath(CanvasWindow canvas) {
         head.getShape().setCenter(300, 300);
         for (GraphicsObject part : body) {
-            part.setCenter(300, 300);
+            part.setCenter(-10, -10);
         }
 
        
