@@ -51,16 +51,16 @@ public class Snake {
     public boolean bodyCollision() {
         // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
         // if (mushroom.getCenter().distance(point) < eatingDistance) {
-        int count = 0;
-        // double collisionDistance = (BODY_WIDTH/2) + 15;
-        // for (GraphicsObject part : body) {
-        //     if (count > 50) {
-        //         if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
-        //             return true;
-        //         }
-        //     }
-        //     count++;
-        // }
+        //int count = 0;
+        double collisionDistance = (BODY_WIDTH/2) + 15;
+        for (GraphicsObject part : body) {
+            //if (count > 50) {
+                if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
+                    return true;
+                }
+            //}
+            //count++;
+        }
         return false;
 
 
@@ -69,7 +69,14 @@ public class Snake {
     public void makeLonger(int total) {
         for (int i = 0; i < total; i++) {
             Ellipse part = new Ellipse(0, 0, BODY_WIDTH, BODY_WIDTH);
-            part.setCenter(head.getCenter());
+            if (!body.isEmpty()) {
+                int index = body.size() - 1;
+                Point newPosition = body.get(index).getCenter();
+                part.setCenter(newPosition);
+            }
+            else {
+                part.setCenter(head.getCenter());
+            }
             part.setFillColor(color);
             part.setStrokeColor(color);
             body.add(part);

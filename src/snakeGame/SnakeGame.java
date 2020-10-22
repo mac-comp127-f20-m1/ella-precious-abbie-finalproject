@@ -54,7 +54,7 @@ public class SnakeGame {
             if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
                 player.addPoint();
                 System.out.println("                                       score:" + player.showScore());
-                snake.makeLonger(25);
+                snake.makeLonger(15);
             }
             snake.moveBody();
         }
@@ -71,7 +71,7 @@ public class SnakeGame {
 
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 && levels < 2) {
+            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 && levels < 3) {
                 levels += 1;
                 System.out.println("                                               Level " + levels);
                 mushroomManager.placeNewMushroomsOnGameReset();
@@ -79,7 +79,7 @@ public class SnakeGame {
                 // canvas.closeWindow();
                 return true;
             }
-            if (levels >= 2) {
+            if (levels >= 3) {
                 winMessage();
                 //System.out.println("                              You win !");
                 //canvas.closeWindow();
