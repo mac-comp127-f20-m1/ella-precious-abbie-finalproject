@@ -50,8 +50,6 @@ public class Snake {
     }
 
     public boolean bodyCollision() {
-        // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
-        // if (mushroom.getCenter().distance(point) < eatingDistance) {
         bodyCollisionRadius = 0;
         double collisionDistance = (BODY_WIDTH/2) + 10;
         for (GraphicsObject part : body) {

@@ -32,7 +32,13 @@ public class MushroomManager {
     public void placeMushrooms() {
         for (int i = 0; i < NUM_MUSHROOMS; i++) {
             randX = randXGenerator.nextInt(SnakeGame.getCanvasWidth() - MUSHROOM_WIDTH - MUSHROOM_BORDER_OFFSET);
+            if (randX < MUSHROOM_BORDER_OFFSET) {
+                randX += MUSHROOM_BORDER_OFFSET;
+            }
             randY = randYGenerator.nextInt(SnakeGame.getCanvasHeight() - (MUSHROOM_HEIGHT + STEM_HEIGHT) - MUSHROOM_BORDER_OFFSET);
+            if (randY < MUSHROOM_BORDER_OFFSET) {
+                randY += MUSHROOM_BORDER_OFFSET;
+            }
             Mushroom mushroom = new Mushroom(MUSHROOM_WIDTH, MUSHROOM_HEIGHT, STEM_WIDTH, STEM_HEIGHT, randX, randY);
             parentGroup.add(mushroom);
             mushrooms.add(mushroom);

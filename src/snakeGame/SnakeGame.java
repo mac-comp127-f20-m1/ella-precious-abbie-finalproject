@@ -38,6 +38,8 @@ public class SnakeGame {
         canvas.add(gameLayer);
 
         animating = true;
+
+        snake.getHead().moveAroundHelper(canvas);
         
         canvas.animate(() -> {if(animating) {
             moveSnake();
@@ -71,14 +73,10 @@ public class SnakeGame {
 
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 && levels < 3) {
+            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {
                 levels += 1;
                 System.out.println("                                               Level " + levels);
                 mushroomManager.placeNewMushroomsOnGameReset();
-                return true;
-            }
-            if (levels >= 3) {
-                winMessage();
                 return true;
             }
         }
