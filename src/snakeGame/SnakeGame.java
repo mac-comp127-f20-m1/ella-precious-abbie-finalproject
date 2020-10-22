@@ -75,14 +75,10 @@ public class SnakeGame {
                 levels += 1;
                 System.out.println("                                               Level " + levels);
                 mushroomManager.placeNewMushroomsOnGameReset();
-                // System.out.println("                              You win !");
-                // canvas.closeWindow();
                 return true;
             }
             if (levels >= 3) {
                 winMessage();
-                //System.out.println("                              You win !");
-                //canvas.closeWindow();
                 return true;
             }
         }
