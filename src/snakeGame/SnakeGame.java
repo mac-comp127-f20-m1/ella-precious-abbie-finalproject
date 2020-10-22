@@ -3,7 +3,9 @@ package snakeGame;
 import java.awt.Color;
 
 import edu.macalester.graphics.CanvasWindow;
+import edu.macalester.graphics.FontStyle;
 import edu.macalester.graphics.GraphicsGroup;
+import edu.macalester.graphics.GraphicsText;
 
 public class SnakeGame {
     private static final int CANVAS_WIDTH = 600;
@@ -15,7 +17,8 @@ public class SnakeGame {
     private MushroomManager mushroomManager;
     private Player player;
     private int levels = 1;
-    // private int lives = 3;
+
+    private GraphicsText endMessage;
 
 
     public SnakeGame() {
@@ -61,6 +64,9 @@ public class SnakeGame {
             System.out.println("                                       lives: " + player.showLives());
             return;
         }
+        if (player.getLives() == 0) {
+            loseMessage();
+        }
     }
 
     public boolean testWin() {
@@ -74,12 +80,35 @@ public class SnakeGame {
                 return true;
             }
             if (levels >= 2) {
-                System.out.println("                              You win !");
-                canvas.closeWindow();
+                winMessage();
+                //System.out.println("                              You win !");
+                //canvas.closeWindow();
                 return true;
             }
         }
     return false;
+    }
+
+    public void winMessage() {
+        endMessage = new GraphicsText();
+
+        endMessage.setText("YOU WIN!");
+        endMessage.setPosition(50, 300);
+        endMessage.setFontStyle(FontStyle.BOLD);
+        endMessage.setFontSize(100);
+        endMessage.setFillColor(Color.BLUE);
+        canvas.add(endMessage);
+    }
+
+    public void loseMessage() {
+        endMessage = new GraphicsText();
+
+        endMessage.setText("GAME OVER");
+        endMessage.setPosition(10,300);
+        endMessage.setFontStyle(FontStyle.BOLD);
+        endMessage.setFontSize(95);
+        endMessage.setFillColor(Color.BLUE);
+        canvas.add(endMessage);
     }
 
     public static int getCanvasHeight() {
