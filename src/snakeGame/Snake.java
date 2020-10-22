@@ -51,15 +51,19 @@ public class Snake {
     public boolean bodyCollision() {
         // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
         // if (mushroom.getCenter().distance(point) < eatingDistance) {
-        double collisionDistance = (BODY_WIDTH/2) + 15;
-        for (GraphicsObject part : body) {
-            if (body.indexOf(part) > 4) {
-                if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
-                    return true;
-                }
-            }
-        }
+        int count = 0;
+        // double collisionDistance = (BODY_WIDTH/2) + 15;
+        // for (GraphicsObject part : body) {
+        //     if (count > 50) {
+        //         if (part.getCenter().distance(head.getCenter()) < collisionDistance) {
+        //             return true;
+        //         }
+        //     }
+        //     count++;
+        // }
         return false;
+
+
     }
    
     public void makeLonger(int total) {
