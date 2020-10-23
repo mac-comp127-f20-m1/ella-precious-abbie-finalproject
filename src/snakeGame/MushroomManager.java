@@ -69,10 +69,6 @@ public class MushroomManager {
         return mushrooms.size() > 0;
     }
 
-    // public int getNumberOfMushrooms() {
-    //     return mushrooms.size();
-    // }
-
     public void placeNewMushroomsOnGameReset() {
         placeMushrooms();
     }

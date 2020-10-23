@@ -65,7 +65,6 @@ public class SnakeGame {
             if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
                 player.addPoint();
                 updateScore();
-                System.out.println("                                       score:" + player.showScore());
                 snake.makeLonger(15);
             }
             snake.moveBody();
@@ -74,7 +73,6 @@ public class SnakeGame {
             snake.resetSnakeOnDeath(canvas);
             player.loseLife();
             updateLives();
-            System.out.println("                                       lives: " + player.showLives());
             return;
         }
         if (player.getLives() == 0) {
@@ -93,7 +91,6 @@ public class SnakeGame {
             if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {
                 levels += 1;
                 updateLevel();
-                System.out.println("                                               Level " + levels);
                 mushroomManager.placeNewMushroomsOnGameReset();
                 return true;
             }
