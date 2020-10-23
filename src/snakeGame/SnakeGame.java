@@ -58,7 +58,7 @@ public class SnakeGame {
         }});
     }
     /**
-     * Moves snake head if it is in bounds and not touching body
+     * Manages snake movement and lives
      */
     public void moveSnake() {
         if(!snake.bodyCollision() &&
@@ -93,12 +93,10 @@ public class SnakeGame {
      */
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-            if (!mushroomManager.mushroomsStillExist() && player.showLives()> 0 ) {
-                levels += 1;
-                updateLevel();
-                mushroomManager.placeNewMushroomsOnGameReset();
-                return true;
-            }
+            levels += 1;
+            updateLevel();
+            mushroomManager.placeNewMushroomsOnGameReset();
+            return true;
         }
     return false;
     }
