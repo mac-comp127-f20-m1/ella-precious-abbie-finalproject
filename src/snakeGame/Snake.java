@@ -18,7 +18,6 @@ public class Snake {
     private List<GraphicsObject> body;
     private Color color;
     private GraphicsGroup parentGroup;
-    private Player player;
     private int bodyCollisionRadius;
 
     public Snake(Color color, GraphicsGroup parentGroup) {
@@ -29,8 +28,6 @@ public class Snake {
         this.color = color;
         this.parentGroup = parentGroup;
         makeLonger(25);
-
-        this.player = new Player();
     }
 
     public List<GraphicsObject> getBodyGraphics() {
@@ -61,8 +58,6 @@ public class Snake {
             bodyCollisionRadius++;
         }
         return false;
-
-
     }
    
     public void makeLonger(int total) {
@@ -101,12 +96,6 @@ public class Snake {
         for (GraphicsObject part : body) {
             part.setCenter(-10, -10);
         }
-
-       
-        //moveBody();
     }
-
-
-
 }
 
