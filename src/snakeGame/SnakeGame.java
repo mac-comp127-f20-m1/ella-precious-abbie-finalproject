@@ -139,7 +139,7 @@ public class SnakeGame {
 
     public void initialLives() {
         lives.setText("Lives " + String.valueOf(player.getLives()));
-        lives.setPosition(CANVAS_WIDTH - 100,20);
+        lives.setPosition(CANVAS_WIDTH - 90,20);
         lives.setFontStyle(FontStyle.BOLD);
         lives.setFontSize(20);
         lives.setFillColor(Color.GRAY);
@@ -149,7 +149,7 @@ public class SnakeGame {
     public void updateLives() {
         if (player.showLives() < 3) {
             lives.setText("Lives " + String.valueOf(player.showLives()));
-            lives.setPosition(CANVAS_WIDTH - 100,20);
+            lives.setPosition(CANVAS_WIDTH - 90,20);
             lives.setFontStyle(FontStyle.BOLD);
             lives.setFontSize(20);
             lives.setFillColor(Color.GRAY);
