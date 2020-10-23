@@ -20,14 +20,19 @@ public class SnakeGame {
 
     private GraphicsText endMessage;
     private GraphicsText score;
+    private GraphicsText lives;
 
 
     public SnakeGame() {
         canvas = new CanvasWindow("Snake Game!", CANVAS_WIDTH, CANVAS_HEIGHT);
         canvas.setBackground(new Color(213, 236, 227));
         this.player = new Player();
+        score = new GraphicsText();
+        lives = new GraphicsText();
+        initialLives();
         initialScore();
         setUpGame(); 
+        
     }
 
     public void setUpGame() {
@@ -66,6 +71,7 @@ public class SnakeGame {
         else if (snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) || snake.bodyCollision()) {
             snake.resetSnakeOnDeath(canvas);
             player.loseLife();
+            updateLives();
             System.out.println("                                       lives: " + player.showLives());
             return;
         }
@@ -109,8 +115,12 @@ public class SnakeGame {
     }
 
     public void initialScore() {
-        score = new GraphicsText();
         score.setText("Score " + String.valueOf(player.showScore()));
+        score.setPosition(10,20);
+        score.setFontStyle(FontStyle.BOLD);
+        score.setFontSize(20);
+        score.setFillColor(Color.GRAY);
+        canvas.add(score); 
     }
 
     public void updateScore() {
@@ -124,6 +134,26 @@ public class SnakeGame {
                 score.setFillColor(Color.GRAY);
                 canvas.add(score);
             }
+        }
+    }
+
+    public void initialLives() {
+        lives.setText("Lives " + String.valueOf(player.getLives()));
+        lives.setPosition(CANVAS_WIDTH - 100,20);
+        lives.setFontStyle(FontStyle.BOLD);
+        lives.setFontSize(20);
+        lives.setFillColor(Color.GRAY);
+        canvas.add(lives);
+    }
+
+    public void updateLives() {
+        if (player.showLives() < 3) {
+            lives.setText("Lives " + String.valueOf(player.showLives()));
+            lives.setPosition(CANVAS_WIDTH - 100,20);
+            lives.setFontStyle(FontStyle.BOLD);
+            lives.setFontSize(20);
+            lives.setFillColor(Color.GRAY);
+            canvas.add(lives); 
         }
     }
 
