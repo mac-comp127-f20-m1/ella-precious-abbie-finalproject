@@ -7,6 +7,9 @@ import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.events.Key;
 
+/**
+ * Represents head of snake
+ */
 public class Head extends GraphicsGroup {
     private static final double WIDTH = 30;
     private GraphicsGroup head;
@@ -51,6 +54,9 @@ public class Head extends GraphicsGroup {
         head.moveBy(directionX, directionY);
     }
 
+    /**
+     * Lets keyboard arrows control head movement
+     */
     public void moveAroundHelper(CanvasWindow canvas) {
         canvas.onKeyDown(event -> {
             if (event.getKey() == Key.LEFT_ARROW) {

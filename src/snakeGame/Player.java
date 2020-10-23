@@ -1,5 +1,8 @@
 package snakeGame;
 
+/**
+ * Manages score and lives
+ */
 public class Player {
     private int score;
     private int lives;
