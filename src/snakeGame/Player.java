@@ -29,8 +29,4 @@ public class Player {
         score = 0;
         lives = 0;
     }
-
-    public int getLives() {
-        return lives;
-    }
 }

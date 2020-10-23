@@ -75,7 +75,7 @@ public class SnakeGame {
             updateLives();
             return;
         }
-        if (player.getLives() == 0) {
+        if (player.showLives() == 0) {
             loseMessage();
         }
     }
@@ -88,7 +88,7 @@ public class SnakeGame {
      */
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {
+            if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0 ) {
                 levels += 1;
                 updateLevel();
                 mushroomManager.placeNewMushroomsOnGameReset();
@@ -144,7 +144,7 @@ public class SnakeGame {
     }
 
     public void initialLives() {
-        lives.setText("Lives " + String.valueOf(player.getLives()));
+        lives.setText("Lives " + String.valueOf(player.showLives()));
         lives.setPosition(10,20);
         lives.setFontStyle(FontStyle.BOLD);
         lives.setFontSize(20);
