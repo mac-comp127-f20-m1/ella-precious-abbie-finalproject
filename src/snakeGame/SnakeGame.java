@@ -19,12 +19,14 @@ public class SnakeGame {
     private int levels = 1;
 
     private GraphicsText endMessage;
+    private GraphicsText score;
 
 
     public SnakeGame() {
         canvas = new CanvasWindow("Snake Game!", CANVAS_WIDTH, CANVAS_HEIGHT);
         canvas.setBackground(new Color(213, 236, 227));
         this.player = new Player();
+        initialScore();
         setUpGame(); 
     }
 
@@ -55,6 +57,7 @@ public class SnakeGame {
             snake.moveHead(canvas);
             if (mushroomManager.findMushroomAtPosition(snake.getHead().getCenter())) {
                 player.addPoint();
+                updateScore();
                 System.out.println("                                       score:" + player.showScore());
                 snake.makeLonger(15);
             }
@@ -103,6 +106,25 @@ public class SnakeGame {
         endMessage.setFontSize(95);
         endMessage.setFillColor(Color.BLUE);
         canvas.add(endMessage);
+    }
+
+    public void initialScore() {
+        score = new GraphicsText();
+        score.setText("Score " + String.valueOf(player.showScore()));
+    }
+
+    public void updateScore() {
+        if (player.showScore() > 0) {
+            score.setText("Score " + String.valueOf(player.showScore()));
+            if (!score.getText().isEmpty()) {
+                score.setText("Score " + String.valueOf(player.showScore()));
+                score.setPosition(10,20);
+                score.setFontStyle(FontStyle.BOLD);
+                score.setFontSize(20);
+                score.setFillColor(Color.GRAY);
+                canvas.add(score);
+            }
+        }
     }
 
     public static int getCanvasHeight() {
