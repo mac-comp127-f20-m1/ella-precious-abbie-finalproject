@@ -8,6 +8,10 @@ import edu.macalester.graphics.Point;
 
 import java.util.Random;
 
+/** This a class that handles all of the mushrooms' interactions and is responsible for placing them
+ *  on the canvas.
+ */
+
 public class MushroomManager {
 
     private GraphicsGroup parentGroup;
@@ -65,14 +69,21 @@ public class MushroomManager {
         return mushrooms.size() > 0;
     }
 
-    public int getNumberOfMushrooms() {
-        return mushrooms.size();
-    }
+    // public int getNumberOfMushrooms() {
+    //     return mushrooms.size();
+    // }
 
     public void placeNewMushroomsOnGameReset() {
         placeMushrooms();
     }
 
+    /**
+     * Takes a point and will cycle through each mushroom left on the screen to determine
+     * if it is at the same location as the point. If it is within the confines of the point,
+     * the mushroom will be removed from the screen and the list.
+     * @param point
+     * @return A boolean that represents whether or not there is a mushroom at the given position.
+     */
     public boolean findMushroomAtPosition(Point point) {
         for (Mushroom mushroom : List.copyOf(mushrooms)) {
             if (   point.getX() > mushroom.getCenter().getX() - .5*mushroom.getWidth()

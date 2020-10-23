@@ -91,6 +91,10 @@ public class Snake {
         } 
     }
 
+    /**
+     * When the snake loses a life, its position will be reset to the center of the screen.
+     * @param canvas
+     */
     public void resetSnakeOnDeath(CanvasWindow canvas) {
         head.getShape().setCenter(300, 300);
         for (GraphicsObject part : body) {

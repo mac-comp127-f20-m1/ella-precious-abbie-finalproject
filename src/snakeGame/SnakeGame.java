@@ -7,6 +7,8 @@ import edu.macalester.graphics.FontStyle;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsText;
 
+/** This is the main class that will set up and run a game of "Snake". */
+
 public class SnakeGame {
     private static final int CANVAS_WIDTH = 600;
     private static final int CANVAS_HEIGHT = 600;
@@ -80,6 +82,12 @@ public class SnakeGame {
         }
     }
 
+    /**
+     * Updates the screen by resetting mushrooms upon clearing all of them, and increases the level
+     * (while the snake retains all of its length).
+     * @return Boolean representing whether or not the player has cleared the current level and
+     *         should then move on to the next one.
+     */
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
             if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {

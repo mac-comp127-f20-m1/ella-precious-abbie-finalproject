@@ -5,6 +5,8 @@ import edu.macalester.graphics.Ellipse;
 import edu.macalester.graphics.Rectangle;
 import java.awt.Color;
 
+/** This is a class representing the mushrooms, the food the snake will eat to get longer. */
+
 public class Mushroom extends GraphicsGroup {
     private static final Color MUSHROOM_RED = new Color(237,120,131);
     private static final Color MUSHROOM_WHITE = new Color(247, 250, 250);
@@ -18,10 +20,21 @@ public class Mushroom extends GraphicsGroup {
         this.mushroomWidth = mushroomWidth;
         this.stemHeight = stemHeight;
         this.stemWidth = stemWidth;
+        // x and y are set to 0 in makeMushroomHead and makeMushroomStem to avoid conflicting 
+        // coordinates within the GraphicsGroup and main gameLayer
         makeMushroom(makeMushroomHead(mushroomHeight, mushroomWidth, 0, 0), makeMushroomStem(stemWidth, stemHeight, 0, 0));
         this.setPosition(x, y);
     }
 
+    /**
+     * 
+     * @param mushroomHeight
+     * @param mushroomWidth
+     * @param x
+     * @param y
+     * @return A graphics group of a red ellipse with white dots, representing the top half of the 
+     *         mushroom.
+     */
     public GraphicsGroup makeMushroomHead(int mushroomHeight, int mushroomWidth, int x, int y) {
         Ellipse mushroomHead = new Ellipse(x, y, mushroomWidth, mushroomHeight);
         Rectangle flatHead = new Rectangle(x, y + (mushroomHeight *.5), mushroomWidth, (mushroomHeight *.5));
@@ -55,6 +68,14 @@ public class Mushroom extends GraphicsGroup {
         return head;
     }
 
+    /**
+     * 
+     * @param stemWidth
+     * @param stemHeight
+     * @param x
+     * @param y
+     * @return A white rectangle representing the base of the mushroom.
+     */
     public Rectangle makeMushroomStem(int stemWidth, int stemHeight, int x, int y) {
         Rectangle mushroomStem = new Rectangle(x + (.2 *mushroomWidth), y + (mushroomHeight - (mushroomHeight * .2)), stemWidth, stemHeight);
         mushroomStem.setFillColor(MUSHROOM_WHITE);
@@ -68,13 +89,4 @@ public class Mushroom extends GraphicsGroup {
         mushroom.add(head);
         add(mushroom);
     }
-
-    public int getMushroomTotalHeight() {
-        return mushroomHeight + stemHeight;
-    }
-
-    public int getMushroomTotalWidth() {
-        return mushroomWidth;
-    }
-
 }
