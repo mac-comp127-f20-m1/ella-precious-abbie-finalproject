@@ -21,7 +21,6 @@ public class Player {
         return score;
     }
 
-
     public int showLives() {
         return lives;
     }

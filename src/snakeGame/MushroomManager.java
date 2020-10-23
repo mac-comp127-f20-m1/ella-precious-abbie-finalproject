@@ -75,11 +75,6 @@ public class MushroomManager {
 
     public boolean findMushroomAtPosition(Point point) {
         for (Mushroom mushroom : List.copyOf(mushrooms)) {
-
-            // Alternative approach: pick one and delete the other
-            // eatingDistance = (snakeHeadWidth + mushroom.getHeight()) / 2
-            // if (mushroom.getCenter().distance(point) < eatingDistance) {
-
             if (   point.getX() > mushroom.getCenter().getX() - .5*mushroom.getWidth()
                 && point.getX() < mushroom.getCenter().getX() + .5*mushroom.getWidth()
                 && point.getY() > mushroom.getCenter().getY() - .5*mushroom.getHeight()

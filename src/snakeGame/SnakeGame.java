@@ -17,11 +17,10 @@ public class SnakeGame {
     private MushroomManager mushroomManager;
     private Player player;
     private int levels = 1;
-
     private GraphicsText endMessage;
     private GraphicsText score;
     private GraphicsText lives;
-
+    private GraphicsText level;
 
     public SnakeGame() {
         canvas = new CanvasWindow("Snake Game!", CANVAS_WIDTH, CANVAS_HEIGHT);
@@ -29,10 +28,11 @@ public class SnakeGame {
         this.player = new Player();
         score = new GraphicsText();
         lives = new GraphicsText();
+        level = new GraphicsText();
         initialLives();
         initialScore();
+        initialLevel();
         setUpGame(); 
-        
     }
 
     public void setUpGame() {
@@ -84,6 +84,7 @@ public class SnakeGame {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
             if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {
                 levels += 1;
+                updateLevel();
                 System.out.println("                                               Level " + levels);
                 mushroomManager.placeNewMushroomsOnGameReset();
                 return true;
@@ -116,7 +117,7 @@ public class SnakeGame {
 
     public void initialScore() {
         score.setText("Score " + String.valueOf(player.showScore()));
-        score.setPosition(10,20);
+        score.setPosition(CANVAS_WIDTH - 350,20);
         score.setFontStyle(FontStyle.BOLD);
         score.setFontSize(20);
         score.setFillColor(Color.GRAY);
@@ -128,7 +129,7 @@ public class SnakeGame {
             score.setText("Score " + String.valueOf(player.showScore()));
             if (!score.getText().isEmpty()) {
                 score.setText("Score " + String.valueOf(player.showScore()));
-                score.setPosition(10,20);
+                score.setPosition(CANVAS_WIDTH - 350,20);
                 score.setFontStyle(FontStyle.BOLD);
                 score.setFontSize(20);
                 score.setFillColor(Color.GRAY);
@@ -139,7 +140,7 @@ public class SnakeGame {
 
     public void initialLives() {
         lives.setText("Lives " + String.valueOf(player.getLives()));
-        lives.setPosition(CANVAS_WIDTH - 90,20);
+        lives.setPosition(10,20);
         lives.setFontStyle(FontStyle.BOLD);
         lives.setFontSize(20);
         lives.setFillColor(Color.GRAY);
@@ -149,12 +150,30 @@ public class SnakeGame {
     public void updateLives() {
         if (player.showLives() < 3) {
             lives.setText("Lives " + String.valueOf(player.showLives()));
-            lives.setPosition(CANVAS_WIDTH - 90,20);
+            lives.setPosition(10,20);
             lives.setFontStyle(FontStyle.BOLD);
             lives.setFontSize(20);
             lives.setFillColor(Color.GRAY);
             canvas.add(lives); 
         }
+    }
+
+    public void initialLevel() {
+        level.setText("Level " + String.valueOf(levels));
+        level.setPosition(CANVAS_WIDTH - 90,20);
+        level.setFontStyle(FontStyle.BOLD);
+        level.setFontSize(20);
+        level.setFillColor(Color.GRAY);
+        canvas.add(level);
+    }
+
+    public void updateLevel() {
+        level.setText("Level " + String.valueOf(levels));
+        level.setPosition(CANVAS_WIDTH - 90,20);
+        level.setFontStyle(FontStyle.BOLD);
+        level.setFontSize(20);
+        level.setFillColor(Color.GRAY);
+        canvas.add(level);
     }
 
     public static int getCanvasHeight() {

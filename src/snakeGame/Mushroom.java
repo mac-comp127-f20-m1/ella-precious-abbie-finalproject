@@ -12,7 +12,6 @@ public class Mushroom extends GraphicsGroup {
     private int mushroomHeight;
     private int stemWidth;
     private int stemHeight;
-    
 
     public Mushroom(int mushroomWidth, int mushroomHeight, int stemWidth, int stemHeight, int x, int y) {
         this.mushroomHeight = mushroomHeight;
@@ -78,5 +77,4 @@ public class Mushroom extends GraphicsGroup {
         return mushroomWidth;
     }
 
-    
 }

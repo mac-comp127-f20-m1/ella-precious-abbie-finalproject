@@ -16,7 +16,6 @@ public class Head extends GraphicsGroup {
     private Ellipse iris;
     private Ellipse pupil;
 
-
     public Head(Color color) {
         makeHead(0, 0, color);
     }
@@ -42,7 +41,6 @@ public class Head extends GraphicsGroup {
         head.add(makeEye(x + WIDTH * 0.7, y + WIDTH * 0.1));
         head.add(makeEye(x + WIDTH * 0.7, y + WIDTH * 0.6));
         add(head);
-
     }
 
     public GraphicsGroup getShape() {
@@ -101,12 +99,9 @@ public class Head extends GraphicsGroup {
                     directionX = 0;
                     directionY = -4;
                     head.rotateBy(90);
-                }
-
-                
+                }  
             }
         });
-
     }
-
+    
 }
