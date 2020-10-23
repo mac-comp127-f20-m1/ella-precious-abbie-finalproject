@@ -11,6 +11,9 @@ import edu.macalester.graphics.Point;
 
 import java.awt.Color;
 
+/**
+ * Creates and manages movement of snake
+ */
 public class Snake {
     private static final double BODY_WIDTH = 15;
 
@@ -20,6 +23,11 @@ public class Snake {
     private GraphicsGroup parentGroup;
     private int bodyCollisionRadius;
 
+    /**
+     * Creates snake with head and 25 body parts
+     * @param color
+     * @param parentGroup
+     */
     public Snake(Color color, GraphicsGroup parentGroup) {
         head = new Head(color);
         body = new ArrayList<>();
@@ -38,6 +46,11 @@ public class Snake {
         return head;
     }
 
+    /**
+     * Checks if snake has passed canvas bounds
+     * @return true when out of bounds
+     * @return false when in bounds
+     */
     public boolean wallCollision(double canvasWidth, double canvasHeight) {
         if (head.getShape().getX() < 0 || head.getShape().getX() + 30 > canvasWidth 
         || head.getShape().getY() < 0 || head.getShape().getY() + 30 > canvasHeight) {
@@ -46,6 +59,11 @@ public class Snake {
         return false;
     }
 
+    /**
+     * Checks if snake head has hit snake body
+     * @return true if snake head is in contact with body
+     * @return false if no contact between head and body
+     */
     public boolean bodyCollision() {
         bodyCollisionRadius = 0;
         double collisionDistance = (BODY_WIDTH/2) + 10;
@@ -59,7 +77,11 @@ public class Snake {
         }
         return false;
     }
-   
+    
+    /**
+     * Adds @param total number of Ellipses to end of snake body,
+     * if body is empty adds to snake head.
+     */
     public void makeLonger(int total) {
         for (int i = 0; i < total; i++) {
             Ellipse part = new Ellipse(0, 0, BODY_WIDTH, BODY_WIDTH);
@@ -82,6 +104,10 @@ public class Snake {
         head.moveAround(canvas);
     }
 
+    /**
+     * Makes each part in body follow the head, moving each ellipse to the previous
+     * position of the ellipse in front of it.
+     */
     public void moveBody() {
         Point newPosition = head.getCenter();
         for (GraphicsObject part : body) {

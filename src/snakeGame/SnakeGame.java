@@ -19,7 +19,6 @@ public class SnakeGame {
     private MushroomManager mushroomManager;
     private Player player;
     private int levels = 1;
-    private GraphicsText endMessage;
     private GraphicsText score;
     private GraphicsText lives;
     private GraphicsText level;
@@ -54,7 +53,9 @@ public class SnakeGame {
             moveSnake();
         }});
     }
-    
+    /**
+     * Moves snake head if it is in bounds and not touching body
+     */
     public void moveSnake() {
         if(!snake.bodyCollision() &&
         !snake.wallCollision(CANVAS_WIDTH, CANVAS_HEIGHT) && player.showLives() > 0) {
@@ -75,7 +76,7 @@ public class SnakeGame {
             updateLives();
             return;
         }
-        if (player.showLives() == 0) {
+        if (player.getLives() == 0) {
             loseMessage();
         }
     }
@@ -88,7 +89,7 @@ public class SnakeGame {
      */
     public boolean testWin() {
         if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0) {
-            if (!mushroomManager.mushroomsStillExist() && player.showLives() > 0 ) {
+            if (!mushroomManager.mushroomsStillExist() && player.getLives() > 0 ) {
                 levels += 1;
                 updateLevel();
                 mushroomManager.placeNewMushroomsOnGameReset();
@@ -98,19 +99,11 @@ public class SnakeGame {
     return false;
     }
 
-    public void winMessage() {
-        endMessage = new GraphicsText();
-
-        endMessage.setText("YOU WIN!");
-        endMessage.setPosition(50, 300);
-        endMessage.setFontStyle(FontStyle.BOLD);
-        endMessage.setFontSize(100);
-        endMessage.setFillColor(Color.BLUE);
-        canvas.add(endMessage);
-    }
-
+    /**
+     * Generates "GAME OVER" graphics text when the player loses
+     */
     public void loseMessage() {
-        endMessage = new GraphicsText();
+        GraphicsText endMessage = new GraphicsText();
 
         endMessage.setText("GAME OVER");
         endMessage.setPosition(10,300);
@@ -144,7 +137,7 @@ public class SnakeGame {
     }
 
     public void initialLives() {
-        lives.setText("Lives " + String.valueOf(player.showLives()));
+        lives.setText("Lives " + String.valueOf(player.getLives()));
         lives.setPosition(10,20);
         lives.setFontStyle(FontStyle.BOLD);
         lives.setFontSize(20);
