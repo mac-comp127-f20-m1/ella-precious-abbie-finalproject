@@ -7,6 +7,10 @@ import edu.macalester.graphics.FontStyle;
 import edu.macalester.graphics.GraphicsGroup;
 import edu.macalester.graphics.GraphicsText;
 
+// Authors:           Precious Dlamini, Ella Morrow, and Abbie Natkin
+// Class:             COMP 127 - 01
+// Acknowledgements:  Thanks to Paul Cantrell for helping us work out a few bugs.
+
 /** This is the main class that will set up and run a game of "Snake". */
 
 public class SnakeGame {
